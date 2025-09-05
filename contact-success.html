@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Sent - Am I Underpaid?</title>
+    <meta name="description" content="Your message has been sent successfully. We'll get back to you soon!">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Message Sent Successfully!</h1>
+            <p class="subtitle">Thank you for contacting us</p>
+        </header>
+
+        <main class="main-content">
+            <div style="padding: 3rem; max-width: 600px; margin: 0 auto; text-align: center;">
+                <div class="success-icon" style="font-size: 4rem; margin-bottom: 2rem;">✅</div>
+                
+                <h2 style="color: #059669; margin-bottom: 1rem;">Your Message Has Been Sent!</h2>
+                
+                <p style="font-size: 1.1rem; color: #4b5563; margin-bottom: 2rem; line-height: 1.6;">
+                    We've received your message and will get back to you within 24 hours. 
+                    Our team at <strong>Yomiori.Ventures@gmail.com</strong> will review your inquiry and provide a helpful response.
+                </p>
+
+                <div style="background: #f0fdf4; padding: 2rem; border-radius: 12px; border-left: 4px solid #10b981; margin-bottom: 2rem;">
+                    <h3 style="color: #065f46; margin-bottom: 1rem;">What happens next?</h3>
+                    <ul style="text-align: left; color: #047857; line-height: 1.8;">
+                        <li>📧 You'll receive an email confirmation shortly</li>
+                        <li>👥 Our team will review your message</li>
+                        <li>💬 We'll respond within 24 hours</li>
+                        <li>🔄 Follow-up if needed for complex inquiries</li>
+                    </ul>
+                </div>
+
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+                    <a href="index.html" class="submit-btn" style="text-decoration: none; display: inline-block;">
+                        🏠 Back to Salary Checker
+                    </a>
+                    <a href="methodology.html" class="submit-btn" style="text-decoration: none; display: inline-block; background: #6b7280;">
+                        📊 Learn About Our Data
+                    </a>
+                </div>
+
+                <div style="background: #f8fafc; padding: 1.5rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <h4 style="color: #1f2937; margin-bottom: 1rem;">Need Immediate Help?</h4>
+                    <p style="color: #6b7280; margin-bottom: 1rem;">
+                        For urgent inquiries, you can also email us directly:
+                    </p>
+                    <a href="mailto:Yomiori.Ventures@gmail.com" style="color: #667eea; font-weight: 600; text-decoration: none;">
+                        📧 Yomiori.Ventures@gmail.com
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="footer-text">
+                    Data sourced from U.S. Bureau of Labor Statistics and government databases.
+                </p>
+                <div class="footer-links">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="methodology.html" class="footer-link">Methodology</a>
+                    <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+                    <a href="contact.html" class="footer-link">Contact</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Auto-redirect after 10 seconds -->
+    <script>
+        setTimeout(() => {
+            const countdown = document.createElement('p');
+            countdown.style.cssText = 'text-align: center; color: #6b7280; margin-top: 2rem;';
+            countdown.innerHTML = 'Redirecting to homepage in <span id="countdown">10</span> seconds...';
+            document.querySelector('main').appendChild(countdown);
+            
+            let timeLeft = 10;
+            const timer = setInterval(() => {
+                timeLeft--;
+                document.getElementById('countdown').textContent = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    window.location.href = 'index.html';
+                }
+            }, 1000);
+        }, 3000);
+    </script>
+</body>
+</html>

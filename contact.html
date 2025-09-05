@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Am I Underpaid?</title>
+    <meta
+      name="description"
+      content="Contact the Am I Underpaid team for questions, feedback, or support with salary comparisons and career insights."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="title">Contact Us</h1>
+        <p class="subtitle">
+          Get in touch with questions, feedback, or support
+        </p>
+        <a
+          href="index.html"
+          style="
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 1rem;
+          "
+          >← Back to Salary Checker</a
+        >
+      </header>
+
+      <main class="main-content">
+        <div class="contact-container">
+          <!-- Contact Information -->
+          <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <p>
+              Have questions about salary data, need support, or want to provide
+              feedback? We'd love to hear from you!
+            </p>
+
+            <div class="contact-methods">
+              <div class="contact-method">
+                <div class="contact-icon">📧</div>
+                <div class="contact-details">
+                  <h3>Email Us</h3>
+                  <p>Yomiori.Ventures@gmail.com</p>
+                  <small>We typically respond within 24 hours</small>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <div class="contact-icon">💬</div>
+                <div class="contact-details">
+                  <h3>Common Questions</h3>
+                  <p>Check our methodology page for data sources</p>
+                  <small>Learn how we calculate salary comparisons</small>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <div class="contact-icon">🚀</div>
+                <div class="contact-details">
+                  <h3>Feature Requests</h3>
+                  <p>Suggest new features or improvements</p>
+                  <small>Help us make the tool better for everyone</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-section">
+            <h2>Send us a Message</h2>
+
+            <!-- Netlify Form with proper attributes -->
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              action="/contact-success.html"
+              class="contact-form"
+              id="contactForm"
+            >
+              <!-- Hidden field for Netlify -->
+              <input type="hidden" name="form-name" value="contact" />
+
+              <!-- Honeypot field for spam protection -->
+              <p class="hidden">
+                <label
+                  >Don't fill this out if you're human: <input name="bot-field"
+                /></label>
+              </p>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name" class="form-label">Name *</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="form-input"
+                    placeholder="Your full name"
+                    required
+                  />
+                  <div class="error-message" id="nameError"></div>
+                </div>
+
+                <div class="form-group">
+                  <label for="email" class="form-label">Email Address *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-input"
+                    placeholder="your.email@example.com"
+                    required
+                  />
+                  <div class="error-message" id="emailError"></div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="subject" class="form-label">Subject *</label>
+                <select id="subject" name="subject" class="form-input" required>
+                  <option value="">Select a topic...</option>
+                  <option value="General Question">General Question</option>
+                  <option value="Data Accuracy">Data Accuracy Inquiry</option>
+                  <option value="Feature Request">Feature Request</option>
+                  <option value="Technical Support">Technical Support</option>
+                  <option value="Business Partnership">
+                    Business Partnership
+                  </option>
+                  <option value="Media Inquiry">Media Inquiry</option>
+                  <option value="Other">Other</option>
+                </select>
+                <div class="error-message" id="subjectError"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="message" class="form-label">Message *</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  class="form-input message-textarea"
+                  placeholder="Please provide details about your inquiry..."
+                  rows="6"
+                  required
+                ></textarea>
+                <div class="character-count">
+                  <span id="charCount">0</span>/1000 characters
+                </div>
+                <div class="error-message" id="messageError"></div>
+              </div>
+
+              <!-- Additional context fields -->
+              <div class="form-group">
+                <label for="jobTitle" class="form-label"
+                  >Job Title (Optional)</label
+                >
+                <input
+                  type="text"
+                  id="jobTitle"
+                  name="jobTitle"
+                  class="form-input"
+                  placeholder="e.g., Software Engineer, Teacher"
+                />
+                <div class="form-help">
+                  Help us provide more relevant assistance
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="location" class="form-label"
+                  >Location (Optional)</label
+                >
+                <input
+                  type="text"
+                  id="location"
+                  name="location"
+                  class="form-input"
+                  placeholder="e.g., New York, NY"
+                />
+                <div class="form-help">For location-specific questions</div>
+              </div>
+
+              <div class="form-group">
+                <label for="experienceLevel" class="form-label"
+                  >Experience Level (Optional)</label
+                >
+                <select
+                  id="experienceLevel"
+                  name="experienceLevel"
+                  class="form-input"
+                >
+                  <option value="">Select your experience level...</option>
+                  <option value="entry">Entry Level (0-2 years)</option>
+                  <option value="mid">Mid-Level (3-5 years)</option>
+                  <option value="senior">Senior Level (6-10 years)</option>
+                  <option value="expert">Expert/Lead (10+ years)</option>
+                </select>
+                <div class="form-help">
+                  Helps us provide more relevant assistance
+                </div>
+              </div>
+
+              <button type="submit" class="submit-btn" id="submitContactBtn">
+                <span class="btn-text">Send Message</span>
+                <div class="loading-spinner" id="contactLoadingSpinner"></div>
+              </button>
+
+              <div class="form-footer">
+                <p class="privacy-note">
+                  🔒 Your information is secure and will only be used to respond
+                  to your inquiry. See our
+                  <a href="privacy-policy.html">Privacy Policy</a> for details.
+                </p>
+              </div>
+            </form>
+
+            <!-- Success/Error Messages -->
+            <div id="formMessages" class="form-messages hidden">
+              <div id="successMessage" class="success-message hidden">
+                <div class="message-icon">✅</div>
+                <h3>Message Sent Successfully!</h3>
+                <p>
+                  Thank you for contacting us. We'll get back to you within 24
+                  hours.
+                </p>
+              </div>
+
+              <div id="errorMessage" class="error-message-box hidden">
+                <div class="message-icon">❌</div>
+                <h3>Message Failed to Send</h3>
+                <p>
+                  Please try again or email us directly at
+                  Yomiori.Ventures@gmail.com
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <p class="footer-text">
+            Data sourced from U.S. Bureau of Labor Statistics and government
+            databases. Results are estimates based on available data and should
+            be used for informational purposes only.
+          </p>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="methodology.html" class="footer-link">Methodology</a>
+            <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="js/contact-form.js"></script>
+  </body>
+</html>

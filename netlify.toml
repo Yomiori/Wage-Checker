@@ -1,0 +1,119 @@
+[build]
+  # Build command (not needed for static site, but can be used for optimization)
+  command = "echo 'Building static site...'"
+  
+  # Directory to publish (root directory since all files are in root)
+  publish = "."
+  
+  # Functions directory (not used but can be added later)
+  functions = "netlify/functions"
+
+[build.environment]
+  # Environment variables for build process
+  NODE_VERSION = "18"
+
+# Redirect rules for SPA-like behavior (optional)
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    
+    # Performance headers
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Content Security Policy for enhanced security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagmanager.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: https:;
+      connect-src 'self' https://api.bls.gov https://www.google-analytics.com;
+      frame-src https://googleads.g.doubleclick.net;
+    """
+
+# Build configuration for GitHub integration
+[build]
+  publish = "."
+  command = ""  # No build command needed for static site
+
+# Form handling
+[build.processing]
+  skip_processing = false
+
+# Netlify Forms configuration
+[[forms]]
+  name = "contact"
+  action = "/contact-success.html"
+
+  # Email notifications
+  [forms.settings]
+    to = "Yomiori.Ventures@gmail.com"
+    subject = "New Contact Form Submission - Am I Underpaid"
+
+  # Spam protection
+  [forms.spam_protection]
+    honeypot = "bot-field"
+
+# Deploy contexts for different branches
+[context.production]
+  publish = "."
+
+[context.deploy-preview]
+  publish = "."
+
+[context.branch-deploy]
+  publish = "."
+
+# Environment variables (add as needed)
+# [build.environment]
+#   NODE_ENV = "production"
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = false
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+# Environment-specific settings
+[context.production.environment]
+  NODE_ENV = "production"
+
+[context.deploy-preview.environment]
+  NODE_ENV = "development"
+
+[context.branch-deploy.environment]
+  NODE_ENV = "development"

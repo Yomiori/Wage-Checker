@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Methodology - Am I Underpaid?</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="title">Our Methodology</h1>
+        <p class="subtitle">
+          How we determine if you're underpaid using government data
+        </p>
+        <a
+          href="index.html"
+          style="
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 1rem;
+          "
+          >← Back to Salary Checker</a
+        >
+      </header>
+
+      <main class="main-content">
+        <div style="padding: 3rem; max-width: 800px; margin: 0 auto">
+          <section style="margin-bottom: 3rem">
+            <h2 style="color: #1f2937; margin-bottom: 1rem; font-size: 1.5rem">
+              Data Sources
+            </h2>
+            <div
+              style="
+                background: #f9fafb;
+                padding: 1.5rem;
+                border-radius: 8px;
+                margin-bottom: 2rem;
+              "
+            >
+              <h3 style="color: #374151; margin-bottom: 1rem">
+                Primary Sources
+              </h3>
+              <ul style="margin-left: 1.5rem; line-height: 1.8; color: #4b5563">
+                <li>
+                  <strong>Bureau of Labor Statistics (BLS)</strong> -
+                  Occupational Employment and Wage Statistics (OES)
+                </li>
+                <li>
+                  <strong>U.S. Census Bureau</strong> - American Community
+                  Survey data
+                </li>
+                <li>
+                  <strong>State Government Databases</strong> - Public employee
+                  salary records
+                </li>
+                <li>
+                  <strong>Federal Government</strong> - OPM salary tables and
+                  federal employee data
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section style="margin-bottom: 3rem">
+            <h2 style="color: #1f2937; margin-bottom: 1rem; font-size: 1.5rem">
+              Calculation Method
+            </h2>
+
+            <div
+              style="
+                background: #f3f4f6;
+                padding: 1.5rem;
+                border-radius: 8px;
+                margin-bottom: 1.5rem;
+              "
+            >
+              <h3 style="color: #374151; margin-bottom: 1rem">
+                Step 1: Job Title Matching
+              </h3>
+              <p style="color: #4b5563; line-height: 1.8">
+                We use the Standard Occupational Classification (SOC) system to
+                match your job title to government occupation codes. Our
+                algorithm performs fuzzy matching to find the closest match even
+                if your exact title isn't in our database.
+              </p>
+            </div>
+
+            <div
+              style="
+                background: #f3f4f6;
+                padding: 1.5rem;
+                border-radius: 8px;
+                margin-bottom: 1.5rem;
+              "
+            >
+              <h3 style="color: #374151; margin-bottom: 1rem">
+                Step 2: Geographic Adjustment
+              </h3>
+              <p style="color: #4b5563; line-height: 1.8">
+                Salaries are adjusted based on your location using:
+              </p>
+              <ul
+                style="margin-left: 1.5rem; margin-top: 0.5rem; color: #4b5563"
+              >
+                <li>Metropolitan Statistical Area (MSA) data when available</li>
+                <li>State-level adjustments for non-metro areas</li>
+                <li>Cost of living indices from government sources</li>
+              </ul>
+            </div>
+
+            <div
+              style="
+                background: #f3f4f6;
+                padding: 1.5rem;
+                border-radius: 8px;
+                margin-bottom: 1.5rem;
+              "
+            >
+              <h3 style="color: #374151; margin-bottom: 1rem">
+                Step 3: Percentile Calculation
+              </h3>
+              <p style="color: #4b5563; line-height: 1.8">
+                Your salary is compared against the distribution of salaries for
+                your occupation and location:
+              </p>
+              <ul
+                style="margin-left: 1.5rem; margin-top: 0.5rem; color: #4b5563"
+              >
+                <li>
+                  <strong>10th Percentile:</strong> 10% of workers earn less
+                </li>
+                <li>
+                  <strong>25th Percentile:</strong> 25% of workers earn less
+                </li>
+                <li>
+                  <strong>50th Percentile (Median):</strong> 50% of workers earn
+                  less
+                </li>
+                <li>
+                  <strong>75th Percentile:</strong> 75% of workers earn less
+                </li>
+                <li>
+                  <strong>90th Percentile:</strong> 90% of workers earn less
+                </li>
+              </ul>
+            </div>
+
+            <div
+              style="
+                background: #fef2f2;
+                border-left: 4px solid #ef4444;
+                padding: 1.5rem;
+                border-radius: 8px;
+              "
+            >
+              <h3 style="color: #dc2626; margin-bottom: 1rem">
+                Underpaid Determination
+              </h3>
+              <p style="color: #4b5563; line-height: 1.8">
+                <strong
+                  >You are considered underpaid if your salary falls below the
+                  25th percentile</strong
+                >
+                for your occupation and location. This means 75% or more of
+                people in similar roles in your area earn more than you do.
+              </p>
+            </div>
+          </section>
+
+          <section style="margin-bottom: 3rem">
+            <h2 style="color: #1f2937; margin-bottom: 1rem; font-size: 1.5rem">
+              Data Accuracy & Limitations
+            </h2>
+
+            <div
+              style="
+                background: #fffbeb;
+                border-left: 4px solid #f59e0b;
+                padding: 1.5rem;
+                border-radius: 8px;
+                margin-bottom: 1.5rem;
+              "
+            >
+              <h3 style="color: #92400e; margin-bottom: 1rem">
+                What We Include
+              </h3>
+              <ul style="margin-left: 1.5rem; color: #4b5563; line-height: 1.8">
+                <li>Base annual salary (gross income before taxes)</li>
+                <li>Geographic cost-of-living adjustments</li>
+                <li>Industry-specific variations where available</li>
+                <li>Most recent government data (typically 1-2 years old)</li>
+              </ul>
+            </div>
+
+            <div
+              style="
+                background: #fef2f2;
+                border-left: 4px solid #ef4444;
+                padding: 1.5rem;
+                border-radius: 8px;
+              "
+            >
+              <h3 style="color: #dc2626; margin-bottom: 1rem">
+                What We Don't Include
+              </h3>
+              <ul style="margin-left: 1.5rem; color: #4b5563; line-height: 1.8">
+                <li>Bonuses, stock options, or other variable compensation</li>
+                <li>
+                  Benefits value (health insurance, retirement contributions)
+                </li>
+                <li>Company size or industry-specific premiums</li>
+                <li>Years of experience or education level adjustments</li>
+                <li>Real-time market fluctuations</li>
+              </ul>
+            </div>
+          </section>
+
+          <section style="margin-bottom: 3rem">
+            <h2 style="color: #1f2937; margin-bottom: 1rem; font-size: 1.5rem">
+              Data Freshness
+            </h2>
+            <div
+              style="
+                background: #f0f9ff;
+                border-left: 4px solid #0ea5e9;
+                padding: 1.5rem;
+                border-radius: 8px;
+              "
+            >
+              <p style="color: #4b5563; line-height: 1.8">
+                Government salary data is typically updated annually. Our
+                database reflects the most recent available data from each
+                source, which may be 12-24 months old. We update our data as
+                soon as new government statistics are released.
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2 style="color: #1f2937; margin-bottom: 1rem; font-size: 1.5rem">
+              Important Disclaimers
+            </h2>
+            <div
+              style="
+                background: #f9fafb;
+                padding: 1.5rem;
+                border-radius: 8px;
+                border: 1px solid #e5e7eb;
+              "
+            >
+              <ul style="margin-left: 1.5rem; color: #4b5563; line-height: 1.8">
+                <li>Results are estimates for informational purposes only</li>
+                <li>Individual circumstances may vary significantly</li>
+                <li>Consider total compensation, not just base salary</li>
+                <li>Market conditions change rapidly in some industries</li>
+                <li>Use this data as one factor in career decisions</li>
+                <li>
+                  Consult with career professionals for personalized advice
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <p class="footer-text">
+            Data sourced from U.S. Bureau of Labor Statistics and government
+            databases. Results are estimates based on available data and should
+            be used for informational purposes only.
+          </p>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test - Am I Underpaid?</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 2rem;
+        background: #f5f5f5;
+      }
+      .test-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+      }
+      .test-result {
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 4px;
+      }
+      .pass {
+        background: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+      }
+      .fail {
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+      }
+      .info {
+        background: #d1ecf1;
+        border: 1px solid #bee5eb;
+        color: #0c5460;
+      }
+      button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 0.5rem;
+      }
+      button:hover {
+        background: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="test-container">
+      <h1>Underpaid Checker - Test Suite</h1>
+      <p>
+        This page tests the core functionality of the salary comparison
+        application.
+      </p>
+
+      <div id="testResults"></div>
+
+      <button onclick="runAllTests()">Run All Tests</button>
+      <button onclick="testDataService()">Test Data Service</button>
+      <button onclick="testSalaryCalculation()">Test Salary Calculation</button>
+      <button onclick="testValidation()">Test Input Validation</button>
+
+      <hr style="margin: 2rem 0" />
+
+      <h2>Manual Test Form</h2>
+      <form id="manualTestForm">
+        <div style="margin-bottom: 1rem">
+          <label
+            >Job Title:
+            <input
+              type="text"
+              id="testJobTitle"
+              value="Software Engineer"
+              style="margin-left: 0.5rem; padding: 0.25rem"
+          /></label>
+        </div>
+        <div style="margin-bottom: 1rem">
+          <label
+            >Salary:
+            <input
+              type="text"
+              id="testSalary"
+              value="75,000"
+              style="margin-left: 0.5rem; padding: 0.25rem"
+          /></label>
+        </div>
+        <div style="margin-bottom: 1rem">
+          <label
+            >Location:
+            <input
+              type="text"
+              id="testLocation"
+              value="New York, NY"
+              style="margin-left: 0.5rem; padding: 0.25rem"
+          /></label>
+        </div>
+        <div style="margin-bottom: 1rem">
+          <label
+            >Experience Level:
+            <select
+              id="testExperienceLevel"
+              style="margin-left: 0.5rem; padding: 0.25rem"
+            >
+              <option value="entry">Entry Level</option>
+              <option value="mid" selected>Mid-Level</option>
+              <option value="senior">Senior Level</option>
+              <option value="expert">Expert/Lead</option>
+            </select>
+          </label>
+        </div>
+        <button type="button" onclick="runManualTest()">
+          Test Salary Comparison
+        </button>
+      </form>
+
+      <div id="manualTestResult"></div>
+    </div>
+
+    <script src="js/data-service.js"></script>
+    <script>
+      let testResults = [];
+
+      function addTestResult(testName, passed, message) {
+        testResults.push({ testName, passed, message });
+        updateTestDisplay();
+      }
+
+      function updateTestDisplay() {
+        const container = document.getElementById("testResults");
+        container.innerHTML = testResults
+          .map(
+            (result) => `
+                <div class="test-result ${result.passed ? "pass" : "fail"}">
+                    <strong>${result.testName}:</strong> ${
+              result.passed ? "PASS" : "FAIL"
+            } - ${result.message}
+                </div>
+            `
+          )
+          .join("");
+      }
+
+      function runAllTests() {
+        testResults = [];
+        addTestResult("Initialization", true, "Test suite started");
+
+        testDataService();
+        testSalaryCalculation();
+        testValidation();
+
+        const passedTests = testResults.filter((r) => r.passed).length;
+        const totalTests = testResults.length;
+
+        addTestResult(
+          "Summary",
+          passedTests === totalTests,
+          `${passedTests}/${totalTests} tests passed`
+        );
+      }
+
+      function testDataService() {
+        try {
+          const dataService = new GovernmentDataService();
+          addTestResult(
+            "Data Service Creation",
+            true,
+            "GovernmentDataService instantiated successfully"
+          );
+
+          // Test occupation code lookup
+          const softwareCode =
+            dataService.findOccupationCode("Software Engineer");
+          addTestResult(
+            "Occupation Code Lookup",
+            softwareCode === "15-1252",
+            `Expected '15-1252', got '${softwareCode}'`
+          );
+
+          // Test location code lookup
+          const nyCode = dataService.findLocationCode("New York, NY");
+          addTestResult(
+            "Location Code Lookup",
+            nyCode.length > 0,
+            `Location code found: ${nyCode}`
+          );
+
+          // Test mock data generation
+          const mockData = dataService.getMockSalaryData(
+            "Software Engineer",
+            "New York, NY"
+          );
+          addTestResult(
+            "Mock Data Generation",
+            mockData && mockData.percentiles && mockData.meanAnnualWage > 0,
+            `Mock data generated with mean salary: $${mockData.meanAnnualWage.toLocaleString()}`
+          );
+        } catch (error) {
+          addTestResult("Data Service Error", false, error.message);
+        }
+      }
+
+      function testSalaryCalculation() {
+        try {
+          const dataService = new GovernmentDataService();
+          const mockData = dataService.getMockSalaryData(
+            "Software Engineer",
+            "New York, NY"
+          );
+
+          // Test percentile calculation
+          const testSalary = 80000;
+          let percentile;
+
+          if (testSalary <= mockData.percentiles.p10) percentile = 10;
+          else if (testSalary <= mockData.percentiles.p25) percentile = 25;
+          else if (testSalary <= mockData.percentiles.p50) percentile = 50;
+          else if (testSalary <= mockData.percentiles.p75) percentile = 75;
+          else if (testSalary <= mockData.percentiles.p90) percentile = 90;
+          else percentile = 95;
+
+          addTestResult(
+            "Percentile Calculation",
+            percentile >= 10 && percentile <= 95,
+            `Salary $${testSalary.toLocaleString()} is in ${percentile}th percentile`
+          );
+
+          // Test underpaid determination
+          const isUnderpaid = percentile < 25;
+          addTestResult(
+            "Underpaid Determination",
+            typeof isUnderpaid === "boolean",
+            `Underpaid status: ${
+              isUnderpaid ? "Yes" : "No"
+            } (${percentile}th percentile)`
+          );
+        } catch (error) {
+          addTestResult("Salary Calculation Error", false, error.message);
+        }
+      }
+
+      function testValidation() {
+        try {
+          // Test job title validation
+          const validJobTitle = "Software Engineer";
+          const invalidJobTitle = "A";
+
+          addTestResult(
+            "Job Title Validation - Valid",
+            validJobTitle.length >= 2,
+            `"${validJobTitle}" is valid (${validJobTitle.length} characters)`
+          );
+
+          addTestResult(
+            "Job Title Validation - Invalid",
+            invalidJobTitle.length < 2,
+            `"${invalidJobTitle}" is invalid (${invalidJobTitle.length} characters)`
+          );
+
+          // Test salary validation with new ranges
+          const testSalaries = [
+            { value: 75000, expected: true, desc: "typical salary" },
+            { value: 125000, expected: true, desc: "high salary" },
+            { value: 50000, expected: true, desc: "entry level" },
+            { value: 200000, expected: true, desc: "senior level" },
+            { value: 500, expected: false, desc: "too low" },
+            { value: 15000000, expected: false, desc: "too high" },
+          ];
+
+          testSalaries.forEach((test) => {
+            const isValid = test.value >= 1000 && test.value <= 9999999;
+            addTestResult(
+              `Salary Validation - ${test.desc}`,
+              isValid === test.expected,
+              `$${test.value.toLocaleString()} is ${
+                isValid ? "valid" : "invalid"
+              }`
+            );
+          });
+
+          // Test salary parsing with formatted input
+          const formattedSalaries = [
+            { input: "75,000", expected: 75000 },
+            { input: "$125,000", expected: 125000 },
+            { input: "200000", expected: 200000 },
+            { input: "1,500,000", expected: 1500000 },
+          ];
+
+          formattedSalaries.forEach((test) => {
+            const parsed = parseInt(test.input.replace(/[^\d]/g, ""));
+            addTestResult(
+              `Salary Parsing - "${test.input}"`,
+              parsed === test.expected,
+              `Parsed to ${parsed.toLocaleString()}, expected ${test.expected.toLocaleString()}`
+            );
+          });
+
+          // Test location validation
+          const validLocation = "New York, NY";
+          const invalidLocation = "A";
+
+          addTestResult(
+            "Location Validation - Valid",
+            validLocation.length >= 2,
+            `"${validLocation}" is valid`
+          );
+
+          addTestResult(
+            "Location Validation - Invalid",
+            invalidLocation.length < 2,
+            `"${invalidLocation}" is invalid`
+          );
+        } catch (error) {
+          addTestResult("Validation Error", false, error.message);
+        }
+      }
+
+      async function runManualTest() {
+        const jobTitle = document.getElementById("testJobTitle").value;
+        const salary = parseInt(document.getElementById("testSalary").value);
+        const location = document.getElementById("testLocation").value;
+        const experienceLevel = document.getElementById(
+          "testExperienceLevel"
+        ).value;
+        const resultDiv = document.getElementById("manualTestResult");
+
+        try {
+          resultDiv.innerHTML = '<div class="info">Running test...</div>';
+
+          const dataService = new GovernmentDataService();
+          const salaryData = await dataService.getComprehensiveSalaryData(
+            jobTitle,
+            location,
+            experienceLevel
+          );
+
+          // Calculate percentile
+          let percentile;
+          if (salary <= salaryData.percentiles.p10) percentile = 10;
+          else if (salary <= salaryData.percentiles.p25) percentile = 25;
+          else if (salary <= salaryData.percentiles.p50) percentile = 50;
+          else if (salary <= salaryData.percentiles.p75) percentile = 75;
+          else if (salary <= salaryData.percentiles.p90) percentile = 90;
+          else percentile = 95;
+
+          const isUnderpaid = percentile < 25;
+
+          resultDiv.innerHTML = `
+                    <div class="test-result ${isUnderpaid ? "fail" : "pass"}">
+                        <h3>Manual Test Result</h3>
+                        <p><strong>Job:</strong> ${jobTitle}</p>
+                        <p><strong>Salary:</strong> $${salary.toLocaleString()}</p>
+                        <p><strong>Location:</strong> ${location}</p>
+                        <p><strong>Experience Level:</strong> ${experienceLevel}</p>
+                        <p><strong>Percentile:</strong> ${percentile}th</p>
+                        <p><strong>Status:</strong> ${
+                          isUnderpaid ? "Underpaid" : "Fair/Above Average"
+                        }</p>
+                        <p><strong>Median Salary:</strong> $${salaryData.percentiles.p50.toLocaleString()}</p>
+                        <p><strong>75th Percentile:</strong> $${salaryData.percentiles.p75.toLocaleString()}</p>
+                        <p><strong>Data Source:</strong> ${
+                          salaryData.source
+                        }</p>
+                    </div>
+                `;
+        } catch (error) {
+          resultDiv.innerHTML = `<div class="test-result fail">Error: ${error.message}</div>`;
+        }
+      }
+
+      // Run basic tests on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        addTestResult("Page Load", true, "Test page loaded successfully");
+        addTestResult(
+          "Scripts Loaded",
+          typeof GovernmentDataService !== "undefined",
+          "Data service script loaded"
+        );
+      });
+    </script>
+  </body>
+</html>

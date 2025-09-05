@@ -1,0 +1,27 @@
+{
+  "name": "underpaid-checker",
+  "version": "1.0.0",
+  "description": "A web application to help users determine if they are underpaid compared to others in their profession and geographic area",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 3000",
+    "start": "python -m http.server 3000",
+    "test": "echo 'Open http://localhost:3000/test.html to run tests'",
+    "build": "echo 'Static files ready for deployment'",
+    "deploy": "echo 'Deploy to your hosting provider'"
+  },
+  "keywords": ["salary", "comparison", "underpaid", "wages", "government-data", "bls", "career", "compensation", "salary-analysis"],
+  "author": "Underpaid Checker Team",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/underpaid-checker.git"
+  },
+  "homepage": "https://your-domain.com",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}

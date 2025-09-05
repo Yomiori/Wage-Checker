@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Input Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 2rem; max-width: 600px; margin: 0 auto; }
+        .test-input { padding: 0.5rem; margin: 0.5rem; border: 2px solid #ccc; border-radius: 4px; width: 200px; }
+        .test-input.error { border-color: #ef4444; background-color: #fef2f2; }
+        .result { margin: 1rem 0; padding: 1rem; background: #f0f9ff; border-radius: 4px; }
+        .test-case { margin: 1rem 0; padding: 1rem; border: 1px solid #e5e7eb; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>Salary Input Validation Test</h1>
+    <p>This page tests the new salary input functionality with various input formats.</p>
+    
+    <div class="test-case">
+        <h3>Interactive Test</h3>
+        <label>Enter a salary amount: 
+            <input type="text" id="salaryTest" class="test-input" placeholder="75,000" inputmode="numeric">
+        </label>
+        <div id="testResult" class="result"></div>
+    </div>
+    
+    <div class="test-case">
+        <h3>Automated Tests</h3>
+        <button onclick="runTests()">Run All Tests</button>
+        <div id="automatedResults"></div>
+    </div>
+
+    <script>
+        // Replicate the salary validation logic from the main app
+        function validateSalaryInput(inputElement) {
+            let value = inputElement.value.replace(/[^\d]/g, '');
+            
+            if (value) {
+                const numValue = parseInt(value);
+                if (numValue >= 1000 && numValue <= 9999999) {
+                    inputElement.value = numValue.toLocaleString();
+                    inputElement.classList.remove('error');
+                    return { valid: true, value: numValue, message: `Valid salary: $${numValue.toLocaleString()}` };
+                } else if (numValue > 0 && numValue < 1000) {
+                    inputElement.value = numValue.toLocaleString();
+                    inputElement.classList.add('error');
+                    return { valid: false, value: numValue, message: `Too low: $${numValue.toLocaleString()} (minimum $1,000)` };
+                } else if (numValue > 9999999) {
+                    inputElement.value = numValue.toLocaleString();
+                    inputElement.classList.add('error');
+                    return { valid: false, value: numValue, message: `Too high: $${numValue.toLocaleString()} (maximum $9,999,999)` };
+                } else {
+                    inputElement.classList.add('error');
+                    return { valid: false, value: 0, message: 'Invalid input' };
+                }
+            } else {
+                inputElement.classList.remove('error');
+                return { valid: false, value: 0, message: 'Empty input' };
+            }
+        }
+
+        // Set up interactive test
+        document.getElementById('salaryTest').addEventListener('input', function(e) {
+            const result = validateSalaryInput(e.target);
+            document.getElementById('testResult').innerHTML = `
+                <strong>Result:</strong> ${result.message}<br>
+                <strong>Parsed Value:</strong> ${result.value}<br>
+                <strong>Valid:</strong> ${result.valid ? 'Yes' : 'No'}
+            `;
+        });
+
+        // Automated tests
+        function runTests() {
+            const testCases = [
+                { input: '75000', expected: 75000, shouldBeValid: true, description: 'Basic number input' },
+                { input: '75,000', expected: 75000, shouldBeValid: true, description: 'Comma-formatted input' },
+                { input: '$125,000', expected: 125000, shouldBeValid: true, description: 'Dollar sign with commas' },
+                { input: '200000', expected: 200000, shouldBeValid: true, description: 'Large salary without commas' },
+                { input: '1,500,000', expected: 1500000, shouldBeValid: true, description: 'Very high salary' },
+                { input: '50000', expected: 50000, shouldBeValid: true, description: 'Entry level salary' },
+                { input: '500', expected: 500, shouldBeValid: false, description: 'Too low salary' },
+                { input: '15000000', expected: 15000000, shouldBeValid: false, description: 'Exceeds maximum' },
+                { input: 'abc', expected: 0, shouldBeValid: false, description: 'Non-numeric input' },
+                { input: '', expected: 0, shouldBeValid: false, description: 'Empty input' },
+                { input: '9,999,999', expected: 9999999, shouldBeValid: true, description: 'Maximum valid salary' },
+                { input: '1,000', expected: 1000, shouldBeValid: true, description: 'Minimum valid salary' }
+            ];
+
+            let results = '<h4>Test Results:</h4>';
+            let passed = 0;
+            let total = testCases.length;
+
+            testCases.forEach((testCase, index) => {
+                // Create a temporary input element for testing
+                const tempInput = document.createElement('input');
+                tempInput.value = testCase.input;
+                
+                const result = validateSalaryInput(tempInput);
+                const isCorrect = (result.value === testCase.expected) && (result.valid === testCase.shouldBeValid);
+                
+                if (isCorrect) passed++;
+                
+                results += `
+                    <div style="margin: 0.5rem 0; padding: 0.5rem; background: ${isCorrect ? '#d4edda' : '#f8d7da'}; border-radius: 4px;">
+                        <strong>Test ${index + 1}:</strong> ${testCase.description}<br>
+                        <strong>Input:</strong> "${testCase.input}"<br>
+                        <strong>Expected:</strong> ${testCase.expected} (${testCase.shouldBeValid ? 'valid' : 'invalid'})<br>
+                        <strong>Got:</strong> ${result.value} (${result.valid ? 'valid' : 'invalid'})<br>
+                        <strong>Result:</strong> ${isCorrect ? 'PASS' : 'FAIL'}
+                    </div>
+                `;
+            });
+
+            results += `<h4>Summary: ${passed}/${total} tests passed</h4>`;
+            document.getElementById('automatedResults').innerHTML = results;
+        }
+
+        // Run tests automatically on page load
+        window.addEventListener('load', () => {
+            setTimeout(runTests, 500);
+        });
+    </script>
+</body>
+</html>
