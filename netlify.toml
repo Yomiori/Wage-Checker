@@ -1,12 +1,9 @@
 [build]
-  # Build command (not needed for static site, but can be used for optimization)
-  command = "echo 'Building static site...'"
-  
   # Directory to publish (root directory since all files are in root)
   publish = "."
-  
-  # Functions directory (not used but can be added later)
-  functions = "netlify/functions"
+
+  # No build command needed for static site
+  command = ""
 
 [build.environment]
   # Environment variables for build process
@@ -59,11 +56,6 @@
       connect-src 'self' https://api.bls.gov https://www.google-analytics.com;
       frame-src https://googleads.g.doubleclick.net;
     """
-
-# Build configuration for GitHub integration
-[build]
-  publish = "."
-  command = ""  # No build command needed for static site
 
 # Form handling
 [build.processing]
