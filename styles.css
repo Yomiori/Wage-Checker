@@ -333,6 +333,95 @@ body {
   transform: translateX(-2px);
 }
 
+/* Salary Guide Section */
+.salary-guide-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  padding: 4rem 0;
+  margin: 3rem 0;
+}
+
+.guide-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.guide-intro {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.guide-intro p {
+  font-size: 1.125rem;
+  color: #374151;
+  line-height: 1.7;
+}
+
+.guide-sections {
+  display: grid;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.guide-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+}
+
+.guide-section h3 {
+  color: #1f2937;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.guide-section p {
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.guide-section ul {
+  margin: 1rem 0 0 0;
+  padding-left: 1.5rem;
+}
+
+.guide-section li {
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.guide-section li strong {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.guide-cta {
+  text-align: center;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 2px solid #667eea;
+}
+
+.guide-cta h3 {
+  color: #667eea;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.guide-cta p {
+  color: #4b5563;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
 /* Ad Spaces */
 .ad-space {
   background: #f3f4f6;

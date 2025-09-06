@@ -6,8 +6,17 @@ Allow: /index.html
 Allow: /contact.html
 Allow: /methodology.html
 Allow: /privacy-policy.html
+Allow: /about.html
+Allow: /contact-success.html
 Allow: /styles.css
 Allow: /js/
+Allow: /*.css$
+Allow: /*.js$
+
+# Future industry-specific pages
+Allow: /salary-checker/
+Allow: /wage-calculator/
+Allow: /salary-comparison-tool/
 
 # Disallow test and development files
 Disallow: /test.html
