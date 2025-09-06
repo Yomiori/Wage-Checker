@@ -1,225 +1,277 @@
 // Analytics and Tracking
 class Analytics {
-    constructor() {
-        this.config = window.CONFIG || {};
-        this.enabled = this.config.analytics?.enabled || false;
-        this.gaId = this.config.analytics?.googleAnalyticsId;
-        
-        if (this.enabled && this.gaId && this.gaId !== 'G-XXXXXXXXXX') {
-            this.initGoogleAnalytics();
-        }
-        
-        this.setupEventTracking();
+  constructor() {
+    this.config = window.CONFIG || {};
+    this.enabled = this.config.analytics?.enabled || false;
+    this.gaId = this.config.analytics?.googleAnalyticsId;
+
+    if (this.enabled && this.gaId && this.gaId !== "G-XXXXXXXXXX") {
+      this.initGoogleAnalytics();
     }
 
-    initGoogleAnalytics() {
-        // Load Google Analytics 4
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = `https://www.googletagmanager.com/gtag/js?id=${this.gaId}`;
-        document.head.appendChild(script);
+    this.setupEventTracking();
+  }
 
-        // Initialize gtag
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', this.gaId, {
-            page_title: document.title,
-            page_location: window.location.href
+  initGoogleAnalytics() {
+    // Load Google Analytics 4
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${this.gaId}`;
+    document.head.appendChild(script);
+
+    // Initialize gtag
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", this.gaId, {
+      page_title: document.title,
+      page_location: window.location.href,
+    });
+
+    // Make gtag available globally
+    window.gtag = gtag;
+  }
+
+  setupEventTracking() {
+    // Track salary checks with enhanced SEO data
+    document.addEventListener("salaryCheckCompleted", (event) => {
+      this.trackEvent("salary_check", {
+        job_title: event.detail.jobTitle,
+        location: event.detail.location,
+        experience_level: event.detail.experienceLevel,
+        is_underpaid: event.detail.isUnderpaid,
+        percentile: event.detail.percentile,
+        // SEO tracking
+        search_source: this.getSearchSource(),
+        landing_page: window.location.pathname,
+        user_agent: navigator.userAgent.includes("Mobile")
+          ? "mobile"
+          : "desktop",
+      });
+
+      // Track conversion for SEO analysis
+      this.trackConversion("salary_check_completed", {
+        value: 1,
+        currency: "USD",
+      });
+    });
+
+    // Track form interactions
+    const form = document.getElementById("salaryForm");
+    if (form) {
+      form.addEventListener("submit", () => {
+        this.trackEvent("form_submit", {
+          form_name: "salary_comparison",
         });
-
-        // Make gtag available globally
-        window.gtag = gtag;
+      });
     }
 
-    setupEventTracking() {
-        // Track salary checks
-        document.addEventListener('salaryCheckCompleted', (event) => {
-            this.trackEvent('salary_check', {
-                job_title: event.detail.jobTitle,
-                location: event.detail.location,
-                experience_level: event.detail.experienceLevel,
-                is_underpaid: event.detail.isUnderpaid,
-                percentile: event.detail.percentile
-            });
-        });
+    // Track page views
+    this.trackPageView();
+  }
 
-        // Track form interactions
-        const form = document.getElementById('salaryForm');
-        if (form) {
-            form.addEventListener('submit', () => {
-                this.trackEvent('form_submit', {
-                    form_name: 'salary_comparison'
-                });
-            });
-        }
+  trackEvent(eventName, parameters = {}) {
+    if (!this.enabled) return;
 
-        // Track page views
-        this.trackPageView();
+    // Google Analytics 4
+    if (typeof gtag !== "undefined") {
+      gtag("event", eventName, parameters);
     }
 
-    trackEvent(eventName, parameters = {}) {
-        if (!this.enabled) return;
-
-        // Google Analytics 4
-        if (typeof gtag !== 'undefined') {
-            gtag('event', eventName, parameters);
-        }
-
-        // Console logging for development
-        if (this.config.environment === 'development') {
-            console.log('Analytics Event:', eventName, parameters);
-        }
+    // Console logging for development
+    if (this.config.environment === "development") {
+      console.log("Analytics Event:", eventName, parameters);
     }
+  }
 
-    trackPageView(pagePath = null) {
-        if (!this.enabled) return;
+  trackPageView(pagePath = null) {
+    if (!this.enabled) return;
 
-        const path = pagePath || window.location.pathname;
-        
-        if (typeof gtag !== 'undefined') {
-            gtag('config', this.gaId, {
-                page_path: path,
-                page_title: document.title,
-                page_location: window.location.href
-            });
-        }
+    const path = pagePath || window.location.pathname;
+
+    if (typeof gtag !== "undefined") {
+      gtag("config", this.gaId, {
+        page_path: path,
+        page_title: document.title,
+        page_location: window.location.href,
+      });
     }
+  }
 
-    trackTiming(name, value, category = 'Performance') {
-        if (!this.enabled) return;
+  trackTiming(name, value, category = "Performance") {
+    if (!this.enabled) return;
 
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'timing_complete', {
-                name: name,
-                value: value,
-                event_category: category
-            });
-        }
+    if (typeof gtag !== "undefined") {
+      gtag("event", "timing_complete", {
+        name: name,
+        value: value,
+        event_category: category,
+      });
     }
+  }
 
-    trackError(error, context = '') {
-        if (!this.enabled) return;
+  trackError(error, context = "") {
+    if (!this.enabled) return;
 
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'exception', {
-                description: error.message || error,
-                fatal: false,
-                context: context
-            });
-        }
+    if (typeof gtag !== "undefined") {
+      gtag("event", "exception", {
+        description: error.message || error,
+        fatal: false,
+        context: context,
+      });
     }
+  }
 
-    // Custom events for salary checker
-    trackSalaryCheck(jobTitle, salary, location, experienceLevel, result) {
-        const event = new CustomEvent('salaryCheckCompleted', {
-            detail: {
-                jobTitle,
-                salary,
-                location,
-                experienceLevel,
-                isUnderpaid: result.isUnderpaid,
-                percentile: result.percentile
-            }
-        });
-        document.dispatchEvent(event);
-    }
+  // Custom events for salary checker
+  trackSalaryCheck(jobTitle, salary, location, experienceLevel, result) {
+    const event = new CustomEvent("salaryCheckCompleted", {
+      detail: {
+        jobTitle,
+        salary,
+        location,
+        experienceLevel,
+        isUnderpaid: result.isUnderpaid,
+        percentile: result.percentile,
+      },
+    });
+    document.dispatchEvent(event);
+  }
 
-    trackAdClick(adSlot) {
-        this.trackEvent('ad_click', {
-            ad_slot: adSlot
-        });
-    }
+  // Get search source for SEO tracking
+  getSearchSource() {
+    const referrer = document.referrer;
+    const urlParams = new URLSearchParams(window.location.search);
 
-    trackAPICall(apiName, success, responseTime) {
-        this.trackEvent('api_call', {
-            api_name: apiName,
-            success: success,
-            response_time: responseTime
-        });
+    if (urlParams.get("utm_source")) {
+      return urlParams.get("utm_source");
+    } else if (referrer.includes("google.com")) {
+      return "google_organic";
+    } else if (referrer.includes("bing.com")) {
+      return "bing_organic";
+    } else if (referrer.includes("yahoo.com")) {
+      return "yahoo_organic";
+    } else if (referrer.includes("facebook.com")) {
+      return "facebook";
+    } else if (referrer.includes("twitter.com")) {
+      return "twitter";
+    } else if (referrer.includes("linkedin.com")) {
+      return "linkedin";
+    } else if (referrer === "") {
+      return "direct";
+    } else {
+      return "referral";
     }
+  }
+
+  // Track conversions for SEO analysis
+  trackConversion(eventName, parameters = {}) {
+    if (window.gtag) {
+      gtag("event", eventName, {
+        event_category: "conversion",
+        event_label: "salary_checker",
+        ...parameters,
+      });
+    }
+  }
+
+  trackAdClick(adSlot) {
+    this.trackEvent("ad_click", {
+      ad_slot: adSlot,
+    });
+  }
+
+  trackAPICall(apiName, success, responseTime) {
+    this.trackEvent("api_call", {
+      api_name: apiName,
+      success: success,
+      response_time: responseTime,
+    });
+  }
 }
 
 // Performance monitoring
 class PerformanceMonitor {
-    constructor() {
-        this.analytics = null;
-        this.startTime = performance.now();
-        
-        this.init();
-    }
+  constructor() {
+    this.analytics = null;
+    this.startTime = performance.now();
 
-    init() {
-        // Wait for analytics to be available
-        setTimeout(() => {
-            this.analytics = window.analytics;
-            this.trackPageLoadTime();
-            this.trackResourceTiming();
-        }, 1000);
-    }
+    this.init();
+  }
 
-    trackPageLoadTime() {
-        window.addEventListener('load', () => {
-            const loadTime = performance.now() - this.startTime;
-            
-            if (this.analytics) {
-                this.analytics.trackTiming('page_load', Math.round(loadTime));
-            }
-        });
-    }
+  init() {
+    // Wait for analytics to be available
+    setTimeout(() => {
+      this.analytics = window.analytics;
+      this.trackPageLoadTime();
+      this.trackResourceTiming();
+    }, 1000);
+  }
 
-    trackResourceTiming() {
-        window.addEventListener('load', () => {
-            const resources = performance.getEntriesByType('resource');
-            
-            resources.forEach(resource => {
-                if (resource.name.includes('.js') || resource.name.includes('.css')) {
-                    const loadTime = resource.responseEnd - resource.requestStart;
-                    
-                    if (this.analytics && loadTime > 1000) { // Only track slow resources
-                        this.analytics.trackTiming(
-                            `resource_load_${resource.name.split('/').pop()}`,
-                            Math.round(loadTime),
-                            'Resource Loading'
-                        );
-                    }
-                }
-            });
-        });
-    }
+  trackPageLoadTime() {
+    window.addEventListener("load", () => {
+      const loadTime = performance.now() - this.startTime;
 
-    trackAPIResponseTime(apiName, startTime) {
-        const responseTime = performance.now() - startTime;
-        
-        if (this.analytics) {
+      if (this.analytics) {
+        this.analytics.trackTiming("page_load", Math.round(loadTime));
+      }
+    });
+  }
+
+  trackResourceTiming() {
+    window.addEventListener("load", () => {
+      const resources = performance.getEntriesByType("resource");
+
+      resources.forEach((resource) => {
+        if (resource.name.includes(".js") || resource.name.includes(".css")) {
+          const loadTime = resource.responseEnd - resource.requestStart;
+
+          if (this.analytics && loadTime > 1000) {
+            // Only track slow resources
             this.analytics.trackTiming(
-                `api_response_${apiName}`,
-                Math.round(responseTime),
-                'API Performance'
+              `resource_load_${resource.name.split("/").pop()}`,
+              Math.round(loadTime),
+              "Resource Loading"
             );
+          }
         }
-        
-        return responseTime;
+      });
+    });
+  }
+
+  trackAPIResponseTime(apiName, startTime) {
+    const responseTime = performance.now() - startTime;
+
+    if (this.analytics) {
+      this.analytics.trackTiming(
+        `api_response_${apiName}`,
+        Math.round(responseTime),
+        "API Performance"
+      );
     }
+
+    return responseTime;
+  }
 }
 
 // Error tracking
-window.addEventListener('error', (event) => {
-    if (window.analytics) {
-        window.analytics.trackError(event.error, 'JavaScript Error');
-    }
+window.addEventListener("error", (event) => {
+  if (window.analytics) {
+    window.analytics.trackError(event.error, "JavaScript Error");
+  }
 });
 
-window.addEventListener('unhandledrejection', (event) => {
-    if (window.analytics) {
-        window.analytics.trackError(event.reason, 'Unhandled Promise Rejection');
-    }
+window.addEventListener("unhandledrejection", (event) => {
+  if (window.analytics) {
+    window.analytics.trackError(event.reason, "Unhandled Promise Rejection");
+  }
 });
 
 // Initialize analytics when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    window.analytics = new Analytics();
-    window.performanceMonitor = new PerformanceMonitor();
+document.addEventListener("DOMContentLoaded", () => {
+  window.analytics = new Analytics();
+  window.performanceMonitor = new PerformanceMonitor();
 });
 
 // Export for use in other modules

@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Allow all search engines to crawl the site
+Allow: /index.html
+Allow: /contact.html
+Allow: /methodology.html
+Allow: /privacy-policy.html
+Allow: /styles.css
+Allow: /js/
+
+# Disallow test and development files
+Disallow: /test.html
+Disallow: /.netlify/
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /.vscode/
+
+# Sitemap location
+Sitemap: https://salarycheck.us/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1

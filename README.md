@@ -5,6 +5,7 @@ A comprehensive, data-driven salary checker that compares your compensation with
 ## 🌟 Features
 
 ### Core Functionality
+
 - **Government Data Integration** - Real salary data from U.S. Bureau of Labor Statistics
 - **Experience Level Analysis** - Tailored comparisons for Entry, Mid-Level, Senior, and Expert professionals
 - **Instant Results** - Get salary insights in seconds
@@ -12,12 +13,14 @@ A comprehensive, data-driven salary checker that compares your compensation with
 - **Percentile Rankings** - See exactly where your salary stands
 
 ### User Experience
+
 - **Mobile-Responsive Design** - Works perfectly on all devices
 - **Professional Contact Form** - Direct communication with Netlify Forms integration
 - **Comprehensive Methodology** - Transparent about data sources and calculations
 - **Privacy-Focused** - Clear privacy policy and data handling practices
 
 ### Technical Features
+
 - **Analytics Integration** - Google Analytics for insights
 - **Email Collection** - Lead magnets for career guidance
 - **Affiliate Marketing** - Relevant career development recommendations
@@ -25,7 +28,7 @@ A comprehensive, data-driven salary checker that compares your compensation with
 
 ## 🚀 Live Demo
 
-**Visit the live application:** [SalaryCheck.us](https://your-site.netlify.app)
+**Visit the live application:** [SalaryCheck.us](https://salarycheck.us)
 
 ## 🛠️ Tech Stack
 
@@ -66,18 +69,22 @@ salary-checker/
 ## 🔧 Development Setup
 
 ### Prerequisites
+
 - Git installed on your system
 - VS Code (recommended) or any code editor
 - Modern web browser for testing
 
 ### Local Development
+
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/YOUR_USERNAME/salary-checker.git
    cd salary-checker
    ```
 
 2. **Open in VS Code:**
+
    ```bash
    code .
    ```
@@ -88,6 +95,7 @@ salary-checker/
    - Visit `http://localhost:5500`
 
 ### Making Changes
+
 1. **Edit files** in VS Code
 2. **Test locally** with Live Server
 3. **Commit changes** using VS Code Source Control
@@ -96,6 +104,7 @@ salary-checker/
 ## 🚀 Deployment
 
 ### Automatic Deployment
+
 - **Connected to Netlify** for automatic deployments
 - **Pushes to `main` branch** trigger new deployments
 - **Deploy previews** available for pull requests
@@ -103,12 +112,14 @@ salary-checker/
 ## 📊 Features Overview
 
 ### Experience Level Integration
+
 - **Entry Level (0-2 years):** 0.75x salary multiplier
 - **Mid-Level (3-5 years):** 1.0x baseline multiplier
 - **Senior Level (6-10 years):** 1.35x salary multiplier
 - **Expert/Lead (10+ years):** 1.65x salary multiplier
 
 ### Data Sources
+
 - **Primary:** U.S. Bureau of Labor Statistics (BLS)
 - **Fallback:** Curated salary data patterns
 - **Location:** Geographic salary adjustments
@@ -131,6 +142,7 @@ salary-checker/
 ## 🤝 Contributing
 
 ### Development Workflow
+
 1. **Fork the repository**
 2. **Create feature branch:** `git checkout -b feature/amazing-feature`
 3. **Make changes** and test locally
@@ -139,6 +151,7 @@ salary-checker/
 6. **Open Pull Request**
 
 ### Code Standards
+
 - **Clean, readable code** with comments
 - **Responsive design** for all screen sizes
 - **Accessibility compliance** where possible
@@ -150,7 +163,7 @@ This project is licensed under the MIT License.
 
 ## 📞 Contact
 
-- **Website:** [SalaryCheck.us](https://your-site.netlify.app)
+- **Website:** [SalaryCheck.us](https://salarycheck.us)
 - **Email:** Yomiori.Ventures@gmail.com
 
 ---
