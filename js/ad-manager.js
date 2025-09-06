@@ -4,7 +4,7 @@ class AdManager {
     this.adConfig = {
       enabled: true,
       provider: "google-adsense", // or 'demo' for testing
-      publisherId: "ca-pub-XXXXXXXXXX", // Replace with your real AdSense publisher ID
+      publisherId: "ca-pub-3454179296705264", // Your actual AdSense publisher ID
       adSlots: {
         header: {
           id: "XXXXXXXXXX", // Replace with your header ad slot ID
