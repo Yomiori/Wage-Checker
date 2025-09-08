@@ -9,6 +9,96 @@
   # Environment variables for build process
   NODE_VERSION = "18"
 
+# SECURITY REDIRECTS - Block WordPress attacks and infrastructure probes
+# WordPress attack protection - Block setup-config.php exploitation attempts
+[[redirects]]
+  from = "/wp-admin/*"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/wordpress/*"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "*/wp-admin/*"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "*/wp-includes/*"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "*/wp-content/*"
+  to = "/404.html"
+  status = 404
+
+# Infrastructure reconnaissance protection
+[[redirects]]
+  from = "/.aws/*"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/_profiler/*"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/phpinfo*"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/.env*"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/config/*"
+  to = "/404.html"
+  status = 404
+
+# Block common vulnerability scanners
+[[redirects]]
+  from = "/admin/*"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/administrator/*"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/phpmyadmin/*"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/mysql/*"
+  to = "/404.html"
+  status = 404
+
+# Block backup file probes
+[[redirects]]
+  from = "*.sql"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "*.bak"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "*.backup"
+  to = "/404.html"
+  status = 404
+
 # Redirect rules for SPA-like behavior (optional)
 [[redirects]]
   from = "/api/*"
@@ -24,7 +114,11 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    
+
+    # Additional security headers for attack protection
+    X-Robots-Tag = "index, follow"
+    X-Permitted-Cross-Domain-Policies = "none"
+
     # Performance headers
     Cache-Control = "public, max-age=31536000, immutable"
 
