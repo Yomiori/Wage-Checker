@@ -225,6 +225,17 @@
     <!-- Google Analytics & Search Console -->
     <script src="config.js"></script>
     <script src="js/analytics.js"></script>
+
+    <!-- Vercel Analytics -->
+    <script>
+      window.va =
+        window.va ||
+        function () {
+          (window.vaq = window.vaq || []).push(arguments);
+        };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="js/vercel-analytics.js"></script>
   </head>
   <body>
     <div class="container">
