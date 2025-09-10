@@ -83,7 +83,7 @@
   <!-- About Page -->
   <url>
     <loc>https://salarycheck.us/about.html</loc>
-    <lastmod>2025-01-06</lastmod>
+    <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -107,7 +107,7 @@
   <!-- Privacy Policy Page -->
   <url>
     <loc>https://salarycheck.us/privacy-policy.html</loc>
-    <lastmod>2025-01-06</lastmod>
+    <lastmod>2025-01-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -132,7 +132,7 @@
   <url>
     <loc>https://salarycheck.us/terms-of-service.html</loc>
     <lastmod>2025-01-10</lastmod>
-    <changefreq>quarterly</changefreq>
+    <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 
