@@ -45,15 +45,21 @@
       rel="stylesheet"
     />
 
-    <!-- Vercel Analytics -->
-    <script>
+    <!-- Vercel Analytics - ES6 Module -->
+    <script type="module">
+      import { inject } from "./js/analytics-simple.js";
+      await inject();
+    </script>
+
+    <!-- Fallback for non-module browsers -->
+    <script nomodule>
       window.va =
         window.va ||
         function () {
           (window.vaq = window.vaq || []).push(arguments);
         };
     </script>
-    <script defer src="/_vercel/insights/script.js"></script>
+    <script nomodule defer src="/_vercel/insights/script.js"></script>
   </head>
   <body>
     <div class="container">
