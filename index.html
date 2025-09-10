@@ -226,44 +226,16 @@
     <script src="config.js"></script>
     <script src="js/analytics.js"></script>
 
-    <!-- Vercel Analytics - Modern ES6 Module -->
-    <script type="module">
-      import { analytics, inject } from "./js/analytics-module.js";
-
-      // Initialize analytics (equivalent to inject() from @vercel/analytics)
-      await analytics.inject();
-
-      // Make analytics available globally
-      window.analytics = analytics;
-
-      // Enhanced tracking for salary checker
-      document.addEventListener("DOMContentLoaded", () => {
-        // Track salary form submissions
-        const salaryForm = document.getElementById("salaryForm");
-        if (salaryForm) {
-          salaryForm.addEventListener("submit", () => {
-            analytics.trackSalaryCheck({
-              page: "homepage",
-              form_type: "salary_checker",
-            });
-          });
-        }
-
-        // Track navigation clicks
-        document.addEventListener("click", (e) => {
-          const link = e.target.closest("a");
-          if (link && link.href && !link.href.startsWith("#")) {
-            analytics.trackNavigation(link.href, {
-              link_text: link.textContent.trim(),
-              link_type: "navigation",
-            });
-          }
-        });
-      });
+    <!-- Vercel Analytics - Emergency Fallback Implementation -->
+    <script>
+      window.va =
+        window.va ||
+        function () {
+          (window.vaq = window.vaq || []).push(arguments);
+        };
     </script>
-
-    <!-- Fallback for non-module browsers -->
-    <script nomodule defer src="js/vercel-analytics.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="js/analytics-fallback.js"></script>
   </head>
   <body>
     <div class="container">

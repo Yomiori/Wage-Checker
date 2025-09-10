@@ -39,21 +39,16 @@
       rel="stylesheet"
     />
 
-    <!-- Vercel Analytics - ES6 Module -->
-    <script type="module">
-      import { inject } from "./js/analytics-simple.js";
-      await inject();
-    </script>
-
-    <!-- Fallback for non-module browsers -->
-    <script nomodule>
+    <!-- Vercel Analytics - Emergency Fallback Implementation -->
+    <script>
       window.va =
         window.va ||
         function () {
           (window.vaq = window.vaq || []).push(arguments);
         };
     </script>
-    <script nomodule defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="js/analytics-fallback.js"></script>
   </head>
   <body>
     <div class="container">
