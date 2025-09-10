@@ -7,9 +7,17 @@
   <!-- Main Salary Checker Page -->
   <url>
     <loc>https://salarycheck.us/</loc>
-    <lastmod>2025-01-06</lastmod>
+    <lastmod>2025-01-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- Am I Underpaid Landing Page - High Priority for Target Keywords -->
+  <url>
+    <loc>https://salarycheck.us/am-i-underpaid.html</loc>
+    <lastmod>2025-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
   </url>
 
   <!-- Alternative URLs for Main Tool -->

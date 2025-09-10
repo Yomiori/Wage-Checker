@@ -10,6 +10,7 @@ Allow: /about.html
 Allow: /contact-success.html
 Allow: /salary-guide.html
 Allow: /terms-of-service.html
+Allow: /am-i-underpaid.html
 Allow: /styles.css
 Allow: /js/
 Allow: /*.css$
