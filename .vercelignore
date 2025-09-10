@@ -1,0 +1,34 @@
+# Vercel ignore file for SalaryCheck.us static site
+
+# Development files
+node_modules/
+.git/
+.gitignore
+
+# Documentation files (optional - remove if you want them deployed)
+*.md
+DEPLOYMENT_CHECKLIST.md
+CONTRIBUTING.md
+GITHUB_SETUP_INSTRUCTIONS.md
+MONETIZATION_*.md
+PROJECT_README.md
+SEO_MONETIZATION_GUIDE.md
+VISUAL_ENHANCEMENTS_SUMMARY.md
+WORKFLOW_QUICK_REFERENCE.md
+
+# Configuration files that shouldn't be public
+netlify.toml
+package.json
+deploy-instructions.md
+deployment-config.md
+
+# Test files
+test.html
+salary-input-test.html
+
+# PowerShell scripts
+*.ps1
+
+# Favicon creation instructions
+FAVICON_CREATION_INSTRUCTIONS.md
+VERCEL_MIGRATION_GUIDE.md

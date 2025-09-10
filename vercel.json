@@ -3,6 +3,17 @@
   "name": "salarycheck-us",
   "alias": ["salarycheck.us", "www.salarycheck.us"],
 
+  "buildCommand": null,
+  "outputDirectory": "./",
+  "installCommand": null,
+
+  "builds": [
+    {
+      "src": "**",
+      "use": "@vercel/static"
+    }
+  ],
+
   "redirects": [
     {
       "source": "/wp-admin/(.*)",
