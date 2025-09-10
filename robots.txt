@@ -8,6 +8,8 @@ Allow: /methodology.html
 Allow: /privacy-policy.html
 Allow: /about.html
 Allow: /contact-success.html
+Allow: /salary-guide.html
+Allow: /terms-of-service.html
 Allow: /styles.css
 Allow: /js/
 Allow: /*.css$
@@ -20,6 +22,8 @@ Allow: /salary-comparison-tool/
 
 # Disallow test and development files
 Disallow: /test.html
+Disallow: /analytics-diagnostic.html
+Disallow: /verify-analytics.js
 Disallow: /.netlify/
 Disallow: /.git/
 Disallow: /.github/

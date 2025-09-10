@@ -112,4 +112,20 @@
     <priority>0.3</priority>
   </url>
 
+  <!-- Salary Guide - High-value content page -->
+  <url>
+    <loc>https://salarycheck.us/salary-guide.html</loc>
+    <lastmod>2025-01-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Terms of Service -->
+  <url>
+    <loc>https://salarycheck.us/terms-of-service.html</loc>
+    <lastmod>2025-01-10</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>
