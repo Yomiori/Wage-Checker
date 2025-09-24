@@ -14,6 +14,33 @@
     }
   ],
 
+  "rewrites": [
+    {
+      "source": "/wage-calculator",
+      "destination": "/wage-calculator.html"
+    },
+    {
+      "source": "/salary-comparison-tool",
+      "destination": "/salary-comparison-tool.html"
+    },
+    {
+      "source": "/salary-checker/tech-industry",
+      "destination": "/salary-checker/tech-industry.html"
+    },
+    {
+      "source": "/salary-checker/healthcare",
+      "destination": "/salary-checker/healthcare.html"
+    },
+    {
+      "source": "/salary-checker/finance",
+      "destination": "/salary-checker/finance.html"
+    },
+    {
+      "source": "/salary-checker/engineering",
+      "destination": "/salary-checker/engineering.html"
+    }
+  ],
+
   "redirects": [
     {
       "source": "/wp-admin/(.*)",

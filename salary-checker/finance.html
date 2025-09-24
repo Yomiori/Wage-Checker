@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finance Salary Checker - Financial Professional Salaries | SalaryCheck.us</title>
+    <meta name="description" content="Check if your finance salary is competitive. Compare banking, investment, and financial services salaries with government data and industry standards." />
+    <meta name="keywords" content="finance salary, banking salary, investment salary, financial analyst wages, finance industry compensation" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://salarycheck.us/salary-checker/finance" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="dtq5Rl032yhoDeEBwwV36z2NynBTaBIj0N-xdhkU19A" />
+    
+    <link rel="stylesheet" href="../styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Vercel Analytics -->
+    <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <nav class="nav">
+          <a href="../index.html" class="nav-brand">SalaryCheck.us</a>
+          <div class="nav-links">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../about.html" class="nav-link">About</a>
+            <a href="../methodology.html" class="nav-link">Methodology</a>
+            <a href="../contact.html" class="nav-link">Contact</a>
+          </div>
+        </nav>
+        
+        <div class="hero">
+          <h1 class="hero-title">Finance Salary Checker</h1>
+          <p class="hero-subtitle">Specialized salary analysis for financial professionals and banking experts</p>
+          <div class="breadcrumb">
+            <a href="../index.html">Home</a> > <a href="../salary-guide.html">Salary Tools</a> > Finance
+          </div>
+        </div>
+      </header>
+
+      <main class="main">
+        <section class="industry-intro">
+          <div class="container">
+            <h2>Finance Industry Salary Analysis</h2>
+            <p>The finance industry offers competitive compensation for professionals with strong analytical and quantitative skills. Our finance salary checker uses government data and industry reports to help you understand your worth in banking, investment, and financial services.</p>
+            
+            <div class="industry-stats">
+              <div class="stat-card">
+                <h3>Average Finance Salary</h3>
+                <p class="stat-number">$85,000</p>
+                <p class="stat-note">Median across all finance roles</p>
+              </div>
+              <div class="stat-card">
+                <h3>Job Growth</h3>
+                <p class="stat-number">8%</p>
+                <p class="stat-note">Projected 2024-2034</p>
+              </div>
+              <div class="stat-card">
+                <h3>Top Markets</h3>
+                <p class="stat-number">NYC, SF, Chicago</p>
+                <p class="stat-note">Highest compensation</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="salary-checker-section">
+          <div class="container">
+            <h2>Check Your Finance Salary</h2>
+            
+            <div class="salary-form-container">
+              <form id="financeSalaryForm" class="salary-form">
+                <div class="form-group">
+                  <label for="financeJobTitle">Finance Role</label>
+                  <select id="financeJobTitle" name="financeJobTitle" required>
+                    <option value="">Select your finance role</option>
+                    <option value="Financial Analyst">Financial Analyst</option>
+                    <option value="Investment Banker">Investment Banker</option>
+                    <option value="Financial Advisor">Financial Advisor</option>
+                    <option value="Accountant">Accountant</option>
+                    <option value="Credit Analyst">Credit Analyst</option>
+                    <option value="Portfolio Manager">Portfolio Manager</option>
+                    <option value="Risk Manager">Risk Manager</option>
+                    <option value="Treasury Analyst">Treasury Analyst</option>
+                    <option value="Corporate Finance Manager">Corporate Finance Manager</option>
+                    <option value="Compliance Officer">Compliance Officer</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="financeSalary">Current Annual Salary</label>
+                  <input type="number" id="financeSalary" name="financeSalary" placeholder="e.g., 95000" min="40000" max="500000" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="financeLocation">Location</label>
+                  <input type="text" id="financeLocation" name="financeLocation" placeholder="e.g., New York, NY" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="financeExperience">Experience Level</label>
+                  <select id="financeExperience" name="financeExperience" required>
+                    <option value="">Select experience level</option>
+                    <option value="entry">Entry Level (0-2 years)</option>
+                    <option value="mid">Mid Level (3-5 years)</option>
+                    <option value="senior">Senior Level (6-10 years)</option>
+                    <option value="executive">Executive Level (10+ years)</option>
+                  </select>
+                </div>
+
+                <button type="submit" class="cta-button">Check My Finance Salary</button>
+              </form>
+            </div>
+
+            <div id="financeResults" class="results-section" style="display: none;">
+              <div class="results-content">
+                <h3>Your Finance Salary Analysis</h3>
+                <div id="financeResultsContent"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="industry-insights">
+          <div class="container">
+            <h2>Finance Industry Insights</h2>
+            <div class="insights-grid">
+              <div class="insight-card">
+                <h3>High-Demand Areas</h3>
+                <ul>
+                  <li>Investment Banking</li>
+                  <li>Risk Management</li>
+                  <li>Financial Technology</li>
+                  <li>Quantitative Analysis</li>
+                  <li>Regulatory Compliance</li>
+                </ul>
+              </div>
+              <div class="insight-card">
+                <h3>Salary Factors</h3>
+                <ul>
+                  <li>Professional certifications (CFA, CPA)</li>
+                  <li>Institution size and prestige</li>
+                  <li>Bonus and commission structure</li>
+                  <li>Geographic market</li>
+                  <li>Specialization area</li>
+                </ul>
+              </div>
+              <div class="insight-card">
+                <h3>Career Growth</h3>
+                <ul>
+                  <li>Senior analyst positions</li>
+                  <li>Portfolio management</li>
+                  <li>Executive leadership</li>
+                  <li>Fintech opportunities</li>
+                  <li>Consulting roles</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="related-tools">
+          <div class="container">
+            <h2>Other Industry Salary Checkers</h2>
+            <div class="tools-grid">
+              <a href="tech-industry.html" class="tool-card">
+                <h3>Technology Salaries</h3>
+                <p>Software engineers and tech professionals</p>
+              </a>
+              <a href="healthcare.html" class="tool-card">
+                <h3>Healthcare Salaries</h3>
+                <p>Medical professionals and healthcare workers</p>
+              </a>
+              <a href="engineering.html" class="tool-card">
+                <h3>Engineering Salaries</h3>
+                <p>Civil, mechanical, and other engineering fields</p>
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-section">
+              <h3>SalaryCheck.us</h3>
+              <p>Professional salary comparison using government data</p>
+            </div>
+            <div class="footer-section">
+              <h4>Industries</h4>
+              <ul>
+                <li><a href="tech-industry.html">Technology</a></li>
+                <li><a href="healthcare.html">Healthcare</a></li>
+                <li><a href="finance.html">Finance</a></li>
+                <li><a href="engineering.html">Engineering</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4>Legal</h4>
+              <ul>
+                <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="../terms-of-service.html">Terms of Service</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2024 SalaryCheck.us. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/data-service.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const salaryChecker = new SalaryChecker();
+        
+        document.getElementById('financeSalaryForm').addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          const formData = new FormData(e.target);
+          const jobTitle = formData.get('financeJobTitle');
+          const currentSalary = parseInt(formData.get('financeSalary'));
+          const location = formData.get('financeLocation');
+          const experienceLevel = formData.get('financeExperience');
+          
+          try {
+            const result = await salaryChecker.checkSalary(jobTitle, currentSalary, location, experienceLevel);
+            displayResults(result);
+          } catch (error) {
+            console.error('Error checking finance salary:', error);
+            displayError();
+          }
+        });
+        
+        function displayResults(result) {
+          const resultsSection = document.getElementById('financeResults');
+          const resultsContent = document.getElementById('financeResultsContent');
+          
+          resultsContent.innerHTML = `
+            <div class="result-summary ${result.isUnderpaid ? 'underpaid' : 'fair-paid'}">
+              <h4>${result.isUnderpaid ? 'Your finance salary may be below market' : 'Your finance salary appears competitive'}</h4>
+              <p>Your ${result.jobTitle} salary is at the ${result.percentile}th percentile in ${result.location}</p>
+            </div>
+            <div class="salary-breakdown">
+              <h4>Market Analysis for ${result.jobTitle}</h4>
+              <div class="percentile-info">
+                <p><strong>25th Percentile:</strong> $${result.salaryData.percentiles.p25.toLocaleString()}</p>
+                <p><strong>50th Percentile (Median):</strong> $${result.salaryData.percentiles.p50.toLocaleString()}</p>
+                <p><strong>75th Percentile:</strong> $${result.salaryData.percentiles.p75.toLocaleString()}</p>
+                <p><strong>90th Percentile:</strong> $${result.salaryData.percentiles.p90.toLocaleString()}</p>
+              </div>
+            </div>
+          `;
+          
+          resultsSection.style.display = 'block';
+          resultsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function displayError() {
+          const resultsSection = document.getElementById('financeResults');
+          const resultsContent = document.getElementById('financeResultsContent');
+          
+          resultsContent.innerHTML = `
+            <div class="error-message">
+              <h4>Unable to analyze finance salary</h4>
+              <p>We're having trouble accessing salary data right now. Please try again later.</p>
+            </div>
+          `;
+          
+          resultsSection.style.display = 'block';
+        }
+      });
+    </script>
+  </body>
+</html>
