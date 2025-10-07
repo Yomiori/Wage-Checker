@@ -3,25 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Engineering Salary Checker - Professional Engineer Salaries | SalaryCheck.us</title>
-    <meta name="description" content="Check if your engineering salary is competitive. Compare civil, mechanical, electrical, and other engineering salaries with government data and industry standards." />
-    <meta name="keywords" content="engineering salary, civil engineer salary, mechanical engineer salary, electrical engineer wages, engineering compensation" />
+    <title>
+      Engineering Salary Checker - Professional Engineer Salaries |
+      SalaryCheck.us
+    </title>
+    <meta
+      name="description"
+      content="Check if your engineering salary is competitive. Compare civil, mechanical, electrical, and other engineering salaries with government data and industry standards."
+    />
+    <meta
+      name="keywords"
+      content="engineering salary, civil engineer salary, mechanical engineer salary, electrical engineer wages, engineering compensation"
+    />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://salarycheck.us/salary-checker/engineering" />
-    
+    <link
+      rel="canonical"
+      href="https://salarycheck.us/salary-checker/engineering"
+    />
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    
+
     <!-- Google Search Console Verification -->
-    <meta name="google-site-verification" content="dtq5Rl032yhoDeEBwwV36z2NynBTaBIj0N-xdhkU19A" />
-    
-    <link rel="stylesheet" href="../styles.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    
+    <meta
+      name="google-site-verification"
+      content="dtq5Rl032yhoDeEBwwV36z2NynBTaBIj0N-xdhkU19A"
+    />
+
+    <link rel="stylesheet" href="/styles.css?v=2.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Vercel Analytics -->
-    <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+    <script>
+      window.va =
+        window.va ||
+        function () {
+          (window.vaq = window.vaq || []).push(arguments);
+        };
+    </script>
     <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/js/analytics-fallback.js"></script>
   </head>
   <body>
     <div class="container">
@@ -35,12 +60,16 @@
             <a href="../contact.html" class="nav-link">Contact</a>
           </div>
         </nav>
-        
+
         <div class="hero">
           <h1 class="hero-title">Engineering Salary Checker</h1>
-          <p class="hero-subtitle">Specialized salary analysis for professional engineers across all disciplines</p>
+          <p class="hero-subtitle">
+            Specialized salary analysis for professional engineers across all
+            disciplines
+          </p>
           <div class="breadcrumb">
-            <a href="../index.html">Home</a> > <a href="../salary-guide.html">Salary Tools</a> > Engineering
+            <a href="../index.html">Home</a> >
+            <a href="../salary-guide.html">Salary Tools</a> > Engineering
           </div>
         </div>
       </header>
@@ -49,8 +78,14 @@
         <section class="industry-intro">
           <div class="container">
             <h2>Engineering Industry Salary Analysis</h2>
-            <p>Engineering professionals apply scientific and mathematical principles to solve real-world problems. Our engineering salary checker uses government data from the Bureau of Labor Statistics to help you understand compensation across various engineering disciplines.</p>
-            
+            <p>
+              Engineering professionals apply scientific and mathematical
+              principles to solve real-world problems. Our engineering salary
+              checker uses government data from the Bureau of Labor Statistics
+              to help you understand compensation across various engineering
+              disciplines.
+            </p>
+
             <div class="industry-stats">
               <div class="stat-card">
                 <h3>Average Engineering Salary</h3>
@@ -74,52 +109,100 @@
         <section class="salary-checker-section">
           <div class="container">
             <h2>Check Your Engineering Salary</h2>
-            
+
             <div class="salary-form-container">
               <form id="engineeringSalaryForm" class="salary-form">
                 <div class="form-group">
-                  <label for="engineeringJobTitle">Engineering Discipline</label>
-                  <select id="engineeringJobTitle" name="engineeringJobTitle" required>
+                  <label for="engineeringJobTitle"
+                    >Engineering Discipline</label
+                  >
+                  <select
+                    id="engineeringJobTitle"
+                    name="engineeringJobTitle"
+                    required
+                  >
                     <option value="">Select your engineering discipline</option>
                     <option value="Civil Engineer">Civil Engineer</option>
-                    <option value="Mechanical Engineer">Mechanical Engineer</option>
-                    <option value="Electrical Engineer">Electrical Engineer</option>
+                    <option value="Mechanical Engineer">
+                      Mechanical Engineer
+                    </option>
+                    <option value="Electrical Engineer">
+                      Electrical Engineer
+                    </option>
                     <option value="Chemical Engineer">Chemical Engineer</option>
-                    <option value="Aerospace Engineer">Aerospace Engineer</option>
-                    <option value="Environmental Engineer">Environmental Engineer</option>
-                    <option value="Industrial Engineer">Industrial Engineer</option>
-                    <option value="Biomedical Engineer">Biomedical Engineer</option>
-                    <option value="Petroleum Engineer">Petroleum Engineer</option>
-                    <option value="Materials Engineer">Materials Engineer</option>
+                    <option value="Aerospace Engineer">
+                      Aerospace Engineer
+                    </option>
+                    <option value="Environmental Engineer">
+                      Environmental Engineer
+                    </option>
+                    <option value="Industrial Engineer">
+                      Industrial Engineer
+                    </option>
+                    <option value="Biomedical Engineer">
+                      Biomedical Engineer
+                    </option>
+                    <option value="Petroleum Engineer">
+                      Petroleum Engineer
+                    </option>
+                    <option value="Materials Engineer">
+                      Materials Engineer
+                    </option>
                   </select>
                 </div>
 
                 <div class="form-group">
                   <label for="engineeringSalary">Current Annual Salary</label>
-                  <input type="number" id="engineeringSalary" name="engineeringSalary" placeholder="e.g., 85000" min="50000" max="500000" required />
+                  <input
+                    type="number"
+                    id="engineeringSalary"
+                    name="engineeringSalary"
+                    placeholder="e.g., 85000"
+                    min="50000"
+                    max="500000"
+                    required
+                  />
                 </div>
 
                 <div class="form-group">
                   <label for="engineeringLocation">Location</label>
-                  <input type="text" id="engineeringLocation" name="engineeringLocation" placeholder="e.g., Houston, TX" required />
+                  <input
+                    type="text"
+                    id="engineeringLocation"
+                    name="engineeringLocation"
+                    placeholder="e.g., Houston, TX"
+                    required
+                  />
                 </div>
 
                 <div class="form-group">
                   <label for="engineeringExperience">Experience Level</label>
-                  <select id="engineeringExperience" name="engineeringExperience" required>
+                  <select
+                    id="engineeringExperience"
+                    name="engineeringExperience"
+                    required
+                  >
                     <option value="">Select experience level</option>
                     <option value="entry">Entry Level (0-2 years)</option>
                     <option value="mid">Mid Level (3-5 years)</option>
                     <option value="senior">Senior Level (6-10 years)</option>
-                    <option value="executive">Principal/Lead (10+ years)</option>
+                    <option value="executive">
+                      Principal/Lead (10+ years)
+                    </option>
                   </select>
                 </div>
 
-                <button type="submit" class="cta-button">Check My Engineering Salary</button>
+                <button type="submit" class="cta-button">
+                  Check My Engineering Salary
+                </button>
               </form>
             </div>
 
-            <div id="engineeringResults" class="results-section" style="display: none;">
+            <div
+              id="engineeringResults"
+              class="results-section"
+              style="display: none"
+            >
               <div class="results-content">
                 <h3>Your Engineering Salary Analysis</h3>
                 <div id="engineeringResultsContent"></div>
@@ -219,38 +302,55 @@
       </footer>
     </div>
 
-    <script src="../js/app.js"></script>
-    <script src="../js/data-service.js"></script>
+    <script src="/js/app.js?v=2.0"></script>
+    <script src="/js/data-service.js?v=2.0"></script>
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
         const salaryChecker = new SalaryChecker();
-        
-        document.getElementById('engineeringSalaryForm').addEventListener('submit', async function(e) {
-          e.preventDefault();
-          
-          const formData = new FormData(e.target);
-          const jobTitle = formData.get('engineeringJobTitle');
-          const currentSalary = parseInt(formData.get('engineeringSalary'));
-          const location = formData.get('engineeringLocation');
-          const experienceLevel = formData.get('engineeringExperience');
-          
-          try {
-            const result = await salaryChecker.checkSalary(jobTitle, currentSalary, location, experienceLevel);
-            displayResults(result);
-          } catch (error) {
-            console.error('Error checking engineering salary:', error);
-            displayError();
-          }
-        });
-        
+
+        document
+          .getElementById("engineeringSalaryForm")
+          .addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+            const jobTitle = formData.get("engineeringJobTitle");
+            const currentSalary = parseInt(formData.get("engineeringSalary"));
+            const location = formData.get("engineeringLocation");
+            const experienceLevel = formData.get("engineeringExperience");
+
+            try {
+              const result = await salaryChecker.checkSalary(
+                jobTitle,
+                currentSalary,
+                location,
+                experienceLevel
+              );
+              displayResults(result);
+            } catch (error) {
+              console.error("Error checking engineering salary:", error);
+              displayError();
+            }
+          });
+
         function displayResults(result) {
-          const resultsSection = document.getElementById('engineeringResults');
-          const resultsContent = document.getElementById('engineeringResultsContent');
-          
+          const resultsSection = document.getElementById("engineeringResults");
+          const resultsContent = document.getElementById(
+            "engineeringResultsContent"
+          );
+
           resultsContent.innerHTML = `
-            <div class="result-summary ${result.isUnderpaid ? 'underpaid' : 'fair-paid'}">
-              <h4>${result.isUnderpaid ? 'Your engineering salary may be below market' : 'Your engineering salary appears competitive'}</h4>
-              <p>Your ${result.jobTitle} salary is at the ${result.percentile}th percentile in ${result.location}</p>
+            <div class="result-summary ${
+              result.isUnderpaid ? "underpaid" : "fair-paid"
+            }">
+              <h4>${
+                result.isUnderpaid
+                  ? "Your engineering salary may be below market"
+                  : "Your engineering salary appears competitive"
+              }</h4>
+              <p>Your ${result.jobTitle} salary is at the ${
+            result.percentile
+          }th percentile in ${result.location}</p>
             </div>
             <div class="salary-breakdown">
               <h4>Market Analysis for ${result.jobTitle}</h4>
@@ -262,23 +362,25 @@
               </div>
             </div>
           `;
-          
-          resultsSection.style.display = 'block';
-          resultsSection.scrollIntoView({ behavior: 'smooth' });
+
+          resultsSection.style.display = "block";
+          resultsSection.scrollIntoView({ behavior: "smooth" });
         }
-        
+
         function displayError() {
-          const resultsSection = document.getElementById('engineeringResults');
-          const resultsContent = document.getElementById('engineeringResultsContent');
-          
+          const resultsSection = document.getElementById("engineeringResults");
+          const resultsContent = document.getElementById(
+            "engineeringResultsContent"
+          );
+
           resultsContent.innerHTML = `
             <div class="error-message">
               <h4>Unable to analyze engineering salary</h4>
               <p>We're having trouble accessing salary data right now. Please try again later.</p>
             </div>
           `;
-          
-          resultsSection.style.display = 'block';
+
+          resultsSection.style.display = "block";
         }
       });
     </script>
